@@ -60,7 +60,9 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
 
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
-      var element = document.getElementsByClassName('turquoise');
+      var elements = document.getElementsByClassName('turquoise');
+      elements[0].style.opacity = 0.5;
+      var element = elements[0];
 
 
       expect(element).to.have.property(
