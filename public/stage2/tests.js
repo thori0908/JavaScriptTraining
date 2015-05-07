@@ -80,7 +80,11 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
 
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
-      var element = 'change me!';
+      var elements = document.getElementsByTagName('blockquote');
+
+      elements[0].style.transform = "rotate(" + 10 + "deg)";
+      var element = elements[0];
+      console.log(element);
 
 
       expect(element).to.have.property(
