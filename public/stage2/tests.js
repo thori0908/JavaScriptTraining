@@ -195,7 +195,7 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
 
       // ここにコードを記述してください。
       // 変更した DOM 要素は $element 変数に代入してください。
-      var $element = 'change me!';
+      var $element = $("p").css('transform', "rotate(" + 10 + "deg)");
 
 
       expect($element).to.be.instanceof(jQuery);
