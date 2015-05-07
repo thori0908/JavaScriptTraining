@@ -84,7 +84,6 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
 
       elements[0].style.transform = "rotate(" + 10 + "deg)";
       var element = elements[0];
-      console.log(element);
 
 
       expect(element).to.have.property(
@@ -105,7 +104,10 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       //
       // なお、上に 20px 移動させる方法は複数ありますが、今回は top 属性を
       // 使う方法を使ってください。
-      var element = 'change me!';
+      var element = document.querySelector('[data-js-training="blueviolet"]');
+      element.style.position = "relative"; 
+      element.style.top = -20 + "px"; 
+      console.log(element);
 
 
       expect(element).to.have.deep.property(
