@@ -107,8 +107,6 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       var element = document.querySelector('[data-js-training="blueviolet"]');
       element.style.position = "relative"; 
       element.style.top = -20 + "px"; 
-      console.log(element);
-
 
       expect(element).to.have.deep.property(
         secret('qngnfrg.wfGenvavat'), secret('oyhrivbyrg'));
@@ -137,7 +135,8 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       //
       // var $element = $('#brown');
       // $element.text($element.text() + $element.text());
-      var $element = 'change me!';
+      var $element = $('#brown');
+      $element.text($element.text() + $element.text());
 
 
       expect($element).to.be.instanceof(jQuery);
