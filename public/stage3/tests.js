@@ -55,6 +55,9 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
       elementToAdd.textContent = '\uD83D\uDC2C';
 
       // 上の elementToAdd を追加するコードをここに記述してください。
+      var element = document.querySelector('.turquoise');
+      element.appendChild(elementToAdd);
+
 
 
       var turquoise = document.querySelector('.turquoise');
