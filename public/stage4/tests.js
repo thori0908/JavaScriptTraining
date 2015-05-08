@@ -79,6 +79,12 @@
     it('4 番の要素を入力された角度に回転できる', function() {
 
       // ここにコードを記述してください。
+      var inputArg = 0;
+      $('.turquoise').on('change', function(event) {
+        inputArg = Number($('input').val());
+        $('.turquoise').css({"transform" : "rotate(" + inputArg + "deg)"});
+      });
+
 
 
       var turquoise = document.querySelector('.turquoise');
