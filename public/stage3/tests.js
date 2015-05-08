@@ -39,8 +39,12 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
     it('3 番の要素の左右の幽霊要素をすべて除去する', function() {
 
       // ここにコードを記述してください。
+      var element = document.querySelector('.mediumseagreen');
+      var invader = document.querySelectorAll('.mediumseagreen-ghosts'); 
 
-
+      element.removeChild(invader[0]);
+      element.removeChild(invader[1]);
+      
       var darkorange = document.querySelector('.mediumseagreen');
       expect(darkorange).to.have.property('textContent', '3\uD83C\uDF3F');
     });
