@@ -57,6 +57,12 @@
     it('3 番の要素の click イベントで要素を 10 度ずつ回転できる', function() {
 
       // ここにコードを記述してください。
+      var angle = 0; //initial angle [deg]
+      $('.mediumseagreen').on('click', function(event) {
+          angle = angle + 10;
+          var $target = $(event.target);
+          $target.css({"transform" : "rotate(" + angle + "deg)"});
+      });
 
 
       var mediumseagreen = document.querySelector('.mediumseagreen');
