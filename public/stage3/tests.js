@@ -94,6 +94,7 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
       // ここに以下のコードを記述してください。
       //
       // $('.brown-ghost').remove();
+      $('.brown-ghost').remove();
 
 
       var $brown = $('#brown');
@@ -105,6 +106,7 @@ describe('ステージ3（意図した通りに DOM 要素の構造を変更で�
     it('7 番の要素からインベーダー要素を除去する', function() {
 
       // ここにコードを記述してください。
+      $('.darkorange-space-invader').remove();
 
 
       var $darkorange = $('#darkorange');
