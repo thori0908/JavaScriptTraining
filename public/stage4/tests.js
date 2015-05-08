@@ -1,7 +1,4 @@
-'use strict';
-
-describe('ステージ4（意図通りにイベントを利用できる）', function() {
-  describe('イベント編', function() {
+'use strict'; describe('ステージ4（意図通りにイベントを利用できる）', function() { describe('イベント編', function() {
     it('1 番の要素の click イベントで要素内の数字を 1 ずつ大きくできる', function() {
 
       // チュートリアル
@@ -23,6 +20,11 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
       // });
       //
       // ここに上記のどちらかのコードを記述してください。
+      $('#firebrick').on('click', function(event) {
+        var $target = $(event.target);
+        $target.text(Number($target.text()) + 1);
+      });
+      
 
 
       var firebrick = document.getElementById('firebrick');
@@ -37,6 +39,10 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('2 番の要素の click イベントで要素内の数字を 1 ずつ小さくできる', function() {
 
       // ここにコードを記述してください。
+      $('#chocolate').on('click', function(event) {
+         var $target = $(event.target); 
+         $target.text(Number($target.text()) - 1);
+      });
 
 
       var chocolate = document.getElementById('chocolate');
