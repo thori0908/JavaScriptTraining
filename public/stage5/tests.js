@@ -51,10 +51,11 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var promise1 = createWaitPromise(messageFragments[0], 10);
       var promise2 = createWaitPromise(messageFragments[1], 20);
       var promise3 = createWaitPromise(messageFragments[2], 30);
+      
+      var promise = Promise.all([promise1, promise2, promise3]);
+
 
       // 作成した promise を promise 変数に代入してください。
-      var promise = Promise.all;
-
 
       return expect(promise).to.eventually.deep.equal(messageFragments);
     });
