@@ -111,9 +111,11 @@
       // なお、expect(steelblue).to.be.null は上記のテストの要件を満たして
       // いないので、正解ではありません。
 
+      done(); //delay
+      
       var steelblue = document.querySelector('.steelblue');
+      
       expect(steelblue).to.have.property('textContent', '5 \uD83D\uDC33');
-      done();
     });
   });
 });
