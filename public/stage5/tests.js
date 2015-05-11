@@ -32,6 +32,16 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
 
       // ここにコードを記述してください。
 
+      function onRejected(msg) {
+        expect(msg).to.equal('rejected!');
+        testDone();
+      }
+
+      function onResolved (msg) {
+        testDone();
+      }
+      
+      promise.then(onResolved, onRejected); 
 
     });
 
@@ -43,7 +53,7 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var promise3 = createWaitPromise(messageFragments[2], 30);
 
       // 作成した promise を promise 変数に代入してください。
-      var promise = 'change me!';
+      var promise = Promise.all;
 
 
       return expect(promise).to.eventually.deep.equal(messageFragments);
