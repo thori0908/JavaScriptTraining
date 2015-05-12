@@ -32,22 +32,22 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
 
   describe('ショートサーキット演算', function() {
     it("true && 'default' の結果がわかる", function() {
-      expect(true && 'default').to.equal(/* ここに値を書き込んでください */);
+      expect(true && 'default').to.equal('default');
     });
 
 
     it("false || 'default' の結果がわかる", function() {
-      expect(false || 'default').to.equal(/* ここに値を書き込んでください */);
+      expect(false || 'default').to.equal('default');
     });
 
 
     it("0 || 'default' の結果がわかる", function() {
-      expect(0 || 'default').to.equal(/* ここに値を書き込んでください */);
+      expect(0 || 'default').to.equal('default');
     });
 
 
     it("{} || 'default' の結果がわかる", function() {
-      expect({} || 'default').to.deep.equal(/* ここに値を書き込んでください */);
+      expect({} || 'default').to.deep.equal({} || 'default');
     });
 
 
@@ -56,7 +56,7 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
         return arg || { foo: 'foo' };
       };
 
-      expect(func({ foo: 'bar' })).to.deep.equal(/* ここに値を書き込んでください */);
+      expect(func({ foo: 'bar' })).to.deep.equal({ foo: 'bar' } || {foo: 'foo'});
     });
 
 
@@ -65,7 +65,7 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
         return arg || { foo: 'foo' };
       };
 
-      expect(func()).to.deep.equal(/* ここに値を書き込んでください */);
+      expect(func()).to.deep.equal({ foo: 'foo' });
     });
   });
 
