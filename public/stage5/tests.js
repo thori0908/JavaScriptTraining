@@ -184,9 +184,10 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
 
     it('Github API を使って、mixi-inc/JavaScriptTraining の情報を取得できる', function() {
       var repository = 'mixi-inc/JavaScriptTraining';
+      var url = 'https://api.github.com/';
 
       // 作成した promise を mixiRepo 変数に代入してください。
-      var mixiRepo = 'change me!';
+  //    var mixiRepo = fetch(url + reposeitory).then(function ());
 
 
       return expect(mixiRepo).to.eventually.have.property('full_name', repository);
