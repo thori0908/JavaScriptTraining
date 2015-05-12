@@ -77,7 +77,7 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
       num = 1;
     })();
 
-    expect(num).to.equal(/* ここに値を書き込んでください */);
+    expect(num).to.equal(1);
   });
 
 
@@ -88,7 +88,7 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
       num = 1;
     }, 0);
 
-    expect(num).to.equal(/* ここに値を書き込んでください */);
+    expect(num).to.equal(0);
   });
 
 
