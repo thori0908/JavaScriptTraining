@@ -13,6 +13,11 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       //   expect(msg).to.equal('resolved!');
       //   testDone();
       // });
+      
+      promise.then(function(msg) {
+        expect(msg).to.equal('resolved!');
+        testDone();
+      });
     });
 
 
@@ -27,6 +32,16 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
 
       // ここにコードを記述してください。
 
+      function onRejected (msg) {
+        expect(msg).to.equal('rejected!');
+        testDone();
+      }
+
+      function onResolved (msg) {
+        testDone();
+      }
+      
+      promise.then(onResolved, onRejected); 
 
     });
 
@@ -36,10 +51,11 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var promise1 = createWaitPromise(messageFragments[0], 10);
       var promise2 = createWaitPromise(messageFragments[1], 20);
       var promise3 = createWaitPromise(messageFragments[2], 30);
+      
+      var promise = Promise.all([promise1, promise2, promise3]);
+
 
       // 作成した promise を promise 変数に代入してください。
-      var promise = 'change me!';
-
 
       return expect(promise).to.eventually.deep.equal(messageFragments);
     });
@@ -52,7 +68,7 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       var promise3 = createWaitPromise(messageFragments[2], 30);
 
       // 作成した promise を promise 変数に代入してください。
-      var promise = 'change me!';
+      var promise = Promise.race([promise1, promise2, promise3]);
 
 
       return expect(promise).to.eventually.equal(messageFragments[1]);
@@ -72,6 +88,10 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
       // var promisedFriends = fetch(api + username).then(function(res) {
       //   return res.json();
       // });
+      
+      var promisedFriends = fetch(api + username).then(function(res) {
+        return res.json();
+      });
 
 
       return expect(promisedFriends).to.eventually.have.length(1)
@@ -80,12 +100,15 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
 
 
     it('/api/friends API を使って Shen の友人を取得できる', function() {
+
+      
       var api = '/api/friends/';
       var username = 'Shen';
 
       // 作成した promise を promisedFriends 変数に代入してください。
-      var promisedFriends = 'change me!';
-
+      var promisedFriends = fetch(api + username).then(function(res) {
+        return res.json();
+      });
 
       return expect(promisedFriends).to.eventually.have.length(2)
         .and.have.members(['jisp', 'TeJaS']);
@@ -93,11 +116,31 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
 
 
     it('/api/friends API を使って Shen の友人の友人を取得できる', function() {
+      
+      function getFriends(username) {
+        var friends = fetch('/api/friends/' + username).then(function(res) {
+          return res.json();
+        });
+        return friends;
+      }
+
+       
+      function flatMap(arrayOfArray) {
+        var friendArray = arrayOfArray.reduce(function(flatArray, array) {
+          return flatArray.concat(array);
+        }, []);
+        return friendArray;
+      }
+
       var api = '/api/friends/';
       var username = 'Shen';
 
       // 作成した promise を promisedFriends 変数に代入してください。
-      var promisedFriends = 'change me!';
+      var promisedFriends = getFriends(username).then(function (shenfriends) {
+        return Promise.all(shenfriends.map(getFriends));    
+      }).then(function(friendArray){
+        return flatMap(friendArray);
+      });
 
 
       return expect(promisedFriends).to.eventually.have.length(1)
@@ -127,7 +170,10 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
     it('Github の mixi-inc の organization の情報を取得できる', function() {
 
       // 作成した promise を mixiOrg 変数に代入してください。
-      var mixiOrg = 'change me!';
+      var url = 'https://api.github.com/orgs/mixi-inc';
+      var mixiOrg = fetch(url).then(function(res){
+        return res.json(); 
+      });
 
       return expect(mixiOrg).to.eventually.have.property('id', 1089312);
 
@@ -138,9 +184,10 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
 
     it('Github API を使って、mixi-inc/JavaScriptTraining の情報を取得できる', function() {
       var repository = 'mixi-inc/JavaScriptTraining';
+      var url = 'https://api.github.com/';
 
       // 作成した promise を mixiRepo 変数に代入してください。
-      var mixiRepo = 'change me!';
+  //    var mixiRepo = fetch(url + reposeitory).then(function ());
 
 
       return expect(mixiRepo).to.eventually.have.property('full_name', repository);
