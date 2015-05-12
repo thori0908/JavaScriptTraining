@@ -138,7 +138,7 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
 
 
     it('parent.grandParent の値がわかる', function() {
-      expect(parent.grandParent).to.equal(/* ここに値を書き込んでください */);
+      expect(parent.grandParent).to.equal(true);
     });
 
 
@@ -148,12 +148,12 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
 
 
     it('child.grandParent の値がわかる', function() {
-      expect(child.grandParent).to.equal(/* ここに値を書き込んでください */);
+      expect(child.grandParent).to.equal(true);
     });
 
 
     it('child.parent の値がわかる', function() {
-      expect(child.parent).to.equal(/* ここに値を書き込んでください */);
+      expect(child.parent).to.equal(true);
     });
   });
 });
