@@ -32,7 +32,7 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
 
       // ここにコードを記述してください。
 
-      function onRejected(msg) {
+      function onRejected (msg) {
         expect(msg).to.equal('rejected!');
         testDone();
       }
@@ -100,6 +100,8 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
 
 
     it('/api/friends API を使って Shen の友人を取得できる', function() {
+
+      
       var api = '/api/friends/';
       var username = 'Shen';
 
@@ -108,18 +110,37 @@ describe('ステージ5（意図通りに非同期処理を利用できる）', 
         return res.json();
       });
 
-
       return expect(promisedFriends).to.eventually.have.length(2)
         .and.have.members(['jisp', 'TeJaS']);
     });
 
 
     it('/api/friends API を使って Shen の友人の友人を取得できる', function() {
+      
+      function getFriends(username) {
+        var friends = fetch('/api/friends/' + username).then(function(res) {
+          return res.json();
+        });
+        return friends;
+      }
+
+       
+      function flatMap(arrayOfArray) {
+        var friendArray = arrayOfArray.reduce(function(flatArray, array) {
+          return flatArray.concat(array);
+        }, []);
+        return friendArray;
+      }
+
       var api = '/api/friends/';
       var username = 'Shen';
 
       // 作成した promise を promisedFriends 変数に代入してください。
-      var promisedFriends = 'change me!';
+      var promisedFriends = getFriends(username).then(function (shenfriends) {
+        return Promise.all(shenfriends.map(getFriends));    
+      }).then(function(friendArray){
+        return flatMap(friendArray);
+      });
 
 
       return expect(promisedFriends).to.eventually.have.length(1)
