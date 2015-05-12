@@ -98,22 +98,22 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
 
 
     it('!!truthy の結果がわかる', function() {
-      expect(!!truthy).to.equal(/* ここに値を書き込んでください */);
+      expect(!!truthy).to.equal(true);
     });
 
 
     it('!!falsey の結果がわかる', function() {
-      expect(!!falsey).to.equal(/* ここに値を書き込んでください */);
+      expect(!!falsey).to.equal(false);
     });
 
 
     it('Boolean(truthy) の結果がわかる', function() {
-      expect(Boolean(truthy)).to.equal(/* ここに値を書き込んでください */);
+      expect(Boolean(truthy)).to.equal(true);
     });
 
 
     it('Boolean(falsey) の結果がわかる', function() {
-      expect(Boolean(falsey)).to.equal(/* ここに値を書き込んでください */);
+      expect(Boolean(falsey)).to.equal(false);
     });
   });
 
