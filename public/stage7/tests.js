@@ -11,20 +11,21 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
     };
 
     var counter = createCounter();
+    console.log(counter);
 
 
     it('1回目の値がわかる', function() {
-      expect(counter()).to.equal(/* ここに値を書き込んでください */);
+      expect(counter()).to.equal(0);
     });
 
 
     it('2回目の値がわかる', function() {
-      expect(counter()).to.equal(/* ここに値を書き込んでください */);
+      expect(counter()).to.equal(1);
     });
 
 
     it('3回目の値がわかる', function() {
-      expect(counter()).to.equal(/* ここに値を書き込んでください */);
+      expect(counter()).to.equal(2);
     });
   });
 
