@@ -11,7 +11,6 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
     };
 
     var counter = createCounter();
-    console.log(counter);
 
 
     it('1回目の値がわかる', function() {
@@ -143,7 +142,7 @@ describe('ステージ7（よくあるJSのイディオムを読める）', func
 
 
     it('parent.child の値がわかる', function() {
-      expect(parent.child).to.equal(/* ここに値を書き込んでください */);
+      expect(parent.child).to.equal(undefined);
     });
 
 
